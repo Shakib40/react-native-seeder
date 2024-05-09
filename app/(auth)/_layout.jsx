@@ -2,12 +2,13 @@ import { Redirect, Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 
 import { Loader } from "../../components";
-// import { useGlobalContext } from "../../context/GlobalProvider";
+
+import { useSelector } from "react-redux";
 
 const AuthLayout = () => {
-  // const { loading, isLogged } = useGlobalContext();
+  const { isLoggedIn } = useSelector((state) => state?.authentication);
 
-  // if (!loading && isLogged) return <Redirect href="/home" />;
+  if (isLoggedIn) return <Redirect href="/home" />;
 
   return (
     <>

@@ -6,7 +6,16 @@ import { View, Text, ScrollView, Dimensions, Image } from "react-native";
 import { images } from "../../constants";
 import { CustomButton, FormField } from "../../components";
 
+import { useDispatch } from "react-redux";
+import {
+  setToken,
+  setAuthDetails,
+  setIsLoggedIn,
+} from "../../features/slice/AuthSlice";
+
 const SignIn = () => {
+  const dispatch = useDispatch();
+
   const [isSubmitting, setSubmitting] = useState(false);
   const [form, setForm] = useState({
     email: "",
@@ -17,6 +26,9 @@ const SignIn = () => {
     router.replace("/home");
     setSubmitting(true);
     setSubmitting(false);
+    dispatch(setToken("ddsdsds"));
+    dispatch(setAuthDetails(form));
+    dispatch(setIsLoggedIn(true));
   };
 
   return (

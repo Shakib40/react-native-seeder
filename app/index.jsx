@@ -5,12 +5,13 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import { images } from "../constants";
 import { CustomButton, Loader } from "../components";
-// import { useGlobalContext } from "../context/GlobalProvider";
+
+import { useSelector } from "react-redux";
 
 const Welcome = () => {
-  // const { loading, isLogged } = useGlobalContext();
+  const { isLoggedIn } = useSelector((state) => state?.authentication);
 
-  // if (!loading && isLogged) return <Redirect href="/home" />;
+  if (isLoggedIn) return <Redirect href="/home" />;
 
   return (
     <SafeAreaView className="bg-primary h-full">
@@ -60,7 +61,7 @@ const Welcome = () => {
         </View>
       </ScrollView>
 
-      <StatusBar backgroundColor="#161622" style="light" />
+      <StatusBar backgroundColor="#161622" />
     </SafeAreaView>
   );
 };
